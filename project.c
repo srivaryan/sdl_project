@@ -205,7 +205,7 @@ int main(void)
     
     // set to 1 when window close button is pressed
     int close_requested = 0;
-    int s=0,a=0;
+    int i=0,s=0,a=0;
     // animation loop
     while (!close_requested)//close not requested loop
     {
@@ -345,6 +345,19 @@ int main(void)
         	y_posb = y_pos; 
 	}
 	
+	if(i>300)
+	{
+		i = 0;
+		if(x_pos > x_pos1)
+		{
+			x_vel1 = SPEED2;
+		}
+		if(x_pos < x_pos1)
+		{
+			x_vel1 = -SPEED2;
+		}
+	}
+	
 	if(y_posc > y_pos && y_posc < y_pos + dests.w && x_posc+(destc.w/2) > x_pos+10 && x_posc+(destc.w/2) < x_pos+dests.w-10)	//for ship interaction
 	{
 		s++;
@@ -391,7 +404,7 @@ int main(void)
         
         // wait 1/60th of a second
         SDL_Delay(1000/60);
-
+        i++;
     }
     
     // clean up resources before exiting
